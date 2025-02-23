@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Purchase</title>
+    <style>
+        /* Body Styling */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Container Styling */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Heading Styling */
+        h1 {
+            color: #ff4757;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2ed573;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        /* QR Code Image */
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 5px solid #ff4757;
+            border-radius: 15px;
+            padding: 10px;
+            background: white;
+        }
+
+        /* Transaction ID Input */
+        .transaction-box {
+            margin: 20px 0;
+        }
+
+        .transaction-box input {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .transaction-box button {
+            background: #2ed573;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .transaction-box button:hover {
+            background: #1e9050;
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .benefits-list li {
+            background: #f1f2f6;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            list-style-type: none;
+            font-size: 1.1em;
+            color: #2f3542;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefits-list li::before {
+            content: "✔️";
+            margin-right: 10px;
+            color: #2ed573;
+            font-size: 1.5em;
+        }
+
+        /* Animation Section */
+        .animation-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .money {
+            position: absolute;
+            font-size: 3em;
+            color: #2ed573;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .popup button {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Premium Purchase</h1>
+        <h2>Get Premium for just ₹100!</h2>
+
+        <!-- QR Code -->
+        <div class="qr-code">
+            <img src="https://i.postimg.cc/ydk8tfGp/qr.png" alt="QR Code" style="width: 100%; height: 100%;">
+        </div>
+
+        <!-- Transaction ID Box -->
+        <div class="transaction-box">
+            <input type="text" id="transactionId" placeholder="Enter Transaction ID">
+            <button onclick="validateTransaction()">Submit</button>
+        </div>
+
+        <!-- Benefits List -->
+        <div class="benefits-list">
+            <h2>Benefits of Premium:</h2>
+            <ul>
+                <li>Use this website for free.</li>
+                <li>Access exclusive features.</li>
+                <li>No ads, no restrictions.</li>
+                <li>Priority customer support.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Animation Section -->
+    <div class="animation-section">
+        <div class="money" style="left: 10%;">💰</div>
+        <div class="money" style="left: 30%; animation-delay: 1s;">💵</div>
+        <div class="money" style="left: 50%; animation-delay: 2s;">💸</div>
+        <div class="money" style="left: 70%; animation-delay: 3s;">💷</div>
+        <div class="money" style="left: 90%; animation-delay: 4s;">💴</div>
+    </div>
+
+    <!-- Popup for Invalid Transaction ID -->
+    <div id="invalidPopup" class="popup">
+        <p>Invalid Transaction ID! Please try again.</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+
+    <script>
+        // Validate Transaction ID
+        function validateTransaction() {
+            const transactionId = document.getElementById('transactionId').value;
+            const validId = "tshssdd8278382hdy";
+
+            if (transactionId === validId) {
+                alert("Transaction successful! Enjoy your Premium access.");
+            } else {
+                document.getElementById('invalidPopup').style.display = 'block';
+            }
+        }
+
+        // Close Popup
+        function closePopup() {
+            document.getElementById('invalidPopup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

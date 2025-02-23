@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refer & Earn</title>
+    <style>
+        /* Body Styling */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff758c 0%, #7eb3ff 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Heading Styling */
+        h1 {
+            color: #ff4757;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #2ed573;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        /* Refer Link Box */
+        .refer-box {
+            background: #ffffff;
+            padding: 20px;
+            border: 2px dashed #ff4757;
+            border-radius: 15px;
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .refer-box input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+
+        .refer-box button {
+            background: #2ed573;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s ease;
+        }
+
+        .refer-box button:hover {
+            background: #1e9050;
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .benefits-list li {
+            background: #f1f2f6;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            list-style-type: none;
+            font-size: 1.2em;
+            color: #2f3542;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefits-list li::before {
+            content: "✔️";
+            margin-right: 10px;
+            color: #2ed573;
+            font-size: 1.5em;
+        }
+
+        /* Animation Section */
+        .animation-section {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+
+        .money {
+            position: absolute;
+            font-size: 3em;
+            color: #2ed573;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Image Animation */
+        .image-animation {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            animation: move 10s infinite linear;
+        }
+
+        @keyframes move {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Footer Styling */
+        footer {
+            margin-top: 40px;
+            font-size: 1em;
+            color: #57606f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Refer & Earn</h1>
+        <h2>Refer Your Friends and Earn ₹50!</h2>
+
+        <!-- Refer Link Box -->
+        <div class="refer-box">
+            <input type="text" id="referLink" value="https://GMRservices.com/refer?code=gmr722" readonly>
+            <button onclick="copyReferLink()">Copy Link</button>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="benefits-list">
+            <h2>Benefits of Referring:</h2>
+            <ul>
+                <li>Earn ₹50 for every successful referral.</li>
+                <li>Help your friends earn too.</li>
+                <li>Easy to share your referral link.</li>
+                <li>No limits, earn as much as you want.</li>
+            </ul>
+        </div>
+
+        <!-- Animation Section -->
+        <div class="animation-section">
+            <div class="money" style="left: 10%;">💰</div>
+            <div class="money" style="left: 30%; animation-delay: 1s;">💵</div>
+            <div class="money" style="left: 50%; animation-delay: 2s;">💸</div>
+            <div class="money" style="left: 70%; animation-delay: 3s;">💷</div>
+            <div class="money" style="left: 90%; animation-delay: 4s;">💴</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="image-animation" style="top: 20%; animation-delay: 0.5s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="image-animation" style="top: 50%; animation-delay: 2s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="image-animation" style="top: 80%; animation-delay: 3.5s;">
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            &copy; 2024 Refer & Earn. All rights reserved.
+        </footer>
+    </div>
+
+    <script>
+        // Copy Refer Link Function
+        function copyReferLink() {
+            const referLink = document.getElementById('referLink');
+            referLink.select();
+            document.execCommand('copy');
+            alert('Link copied: ' + referLink.value);
+        }
+    </script>
+</body>
+</html>
